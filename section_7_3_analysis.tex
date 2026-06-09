@@ -670,7 +670,7 @@ Matrix Vt_gathered = gather_col_blocks_to_root(Vt_local, n, n, 0, MPI_COMM_WORLD
     \centering
     \includegraphics[width=0.9\textwidth]{11.png}
     \caption{MPI2：np=2的结果}
-    \label{fig:slot-mpi1-result}
+    \label{fig:slot-mpi2-np2-full}
 \end{figure}
 \begin{figure}[H]
     \centering
@@ -682,7 +682,7 @@ Matrix Vt_gathered = gather_col_blocks_to_root(Vt_local, n, n, 0, MPI_COMM_WORLD
     \centering
     \includegraphics[width=0.9\textwidth]{13.png}
     \caption{MPI2：np=4的结果}
-    \label{fig:slot-mpi1-result}
+    \label{fig:slot-mpi2-np4-full}
 \end{figure}
 \begin{figure}[H]
     \centering
@@ -694,7 +694,7 @@ Matrix Vt_gathered = gather_col_blocks_to_root(Vt_local, n, n, 0, MPI_COMM_WORLD
     \centering
     \includegraphics[width=0.9\textwidth]{15.png}
     \caption{MPI2：np=8的结果}
-    \label{fig:slot-mpi1-result}
+    \label{fig:slot-mpi2-np8-full}
 \end{figure}
 \begin{figure}[H]
     \centering
@@ -709,72 +709,81 @@ Matrix Vt_gathered = gather_col_blocks_to_root(Vt_local, n, n, 0, MPI_COMM_WORLD
 
   如果说这次实验最大的收获，是我对profiling 有了更深层的理解，因为很多现象只看总时间是看不出来的，必须把关键路径、通信累计、等待、局部更新这些细节子量拆开，才能知道问题到底卡在哪。
 
+\newpage
 \appendix
 \section{AI 使用说明附录}
-
-这一部分主要记录我在实验分析阶段，如何借助 AI 一起把 profiling 的口径一步一步定下来。这里我想保留的不是简单一句“用了 AI”，而是把我当时真正关心的问题和最终形成的分析思路交代清楚。
+这一部分主要记录我在实验分析阶段，如何借助 AI 一起把 profiling 的口径一步一步定下来。
 
 \subsection{1. 一开始关心的问题}
 
-我在后面开始写 profiling 的时候，最先关心的其实不是“表格怎么画”，而是“到底应该统计哪些时间”。因为这次实验里有主进程、有子进程、有点对点通信、有广播同步，还有一些看起来很像时间、但含义其实不一样的量。如果这里口径没定好，后面所有分析都会很乱。
+我在后面开始写 profiling 的时候，是到底应该统计哪些时间。因为这次实验里有主进程、有子进程、有点对点通信、有广播同步，还有一些看起来很像时间、但含义其实不一样的量。如果这里口径没定好，后面所有分析都会很乱。
 
 当时我主要围绕下面几个问题和 AI 讨论：
 \begin{enumerate}
-    \item 我们最后到底应该看主进程的时间，还是看所有进程的总时间。
-    \item 如果想说明程序真正有没有变快，关键路径应该怎么统计。
+    \item 如果想说明程序真正有没有变快，关键路径(rank=0)应该怎么统计。
     \item MPI 里有哪些现成 API 可以用来做时间统计。
     \item 哪些量适合拿来说明“用户实际等了多久”，哪些量适合拿来说明“总资源消耗有多大”。
-    \item 两个 MPI 版本的 profiling 口径不完全一样时，后面该怎么对齐分析。
 \end{enumerate}
 
-\subsection{2. 最后定下来的时间口径}
+\subsection{2. 问答记录}
 
-最后我没有把所有时间都混在一起，而是把它们拆成了几层来看。
+\textbf{问：如果想说明程序真正有没有变快，关键路径（rank=0）应该怎么统计？}
 
+\textbf{答：} 如果只是想回答“这个程序最后到底有没有变快”，那最应该优先看的不是所有进程加起来花了多少时间，而是关键路径上到底花了多少时间。因为对用户来说，真正关心的是这一轮程序什么时候结束，而不是后台一共累计消耗了多少时间。
+
+具体到这次实验里，可以先看 \texttt{time gkh iteration(ms)}，因为它直接对应的是这一段 GKH 迭代主流程在 root 端看到的运行时间；如果想再严格一点，就看 \texttt{MPI\_MAX wall}，也就是所有进程里最慢那个进程的墙钟时间。这个量更接近“整轮任务真正完成时，所有人一共等了多久”。
+
+因此最后在报告里，我就把关键路径时间单独拿出来看，而不是一上来把所有统计量混在一起。
+
+\textbf{问：MPI 里有哪些现成 API 可以用来做时间统计？}
+
+\textbf{答：} 这次最直接、最好用的其实就是 \texttt{MPI\_Wtime()}。它适合做 MPI 程序内部的分段计时，比如：
 \begin{enumerate}
-    \item 第一层是关键路径时间。这里我主要看 \texttt{time gkh iteration(ms)} 和 \texttt{MPI\_MAX wall}。因为这两个量更接近“这轮程序真正跑完，用户等了多久”。
-    \item 第二层是主进程本地工作量。这里我重点看 \texttt{root process block} 和 \texttt{root extract+insert}，因为它们能直接反映 root 自己是不是已经很重了。
-    \item 第三层是通信和同步负担。这里我看的是 \texttt{comm subtotal}，也就是把所有进程上的通信时间累计起来之后得到的值。它不是关键路径时间，但可以说明总体通信负担是不是在变重。
-    \item 第四层是本地更新量。这里看的是 \texttt{local update}，也就是各个进程在本地应用旋转、更新矩阵的累计时间。
-    \item 第五层是调度器的 \texttt{Time Use}。这个量不代表关键路径，但它能说明整次作业到底吃掉了多少 CPU 资源，所以特别适合用来说明“资源用得更多了，但程序不一定真的更快”。
+    \item 在 root 开始处理一个块之前记一次时间；
+    \item 在处理结束之后再记一次时间；
+    \item 两次相减，就能得到这一段 \texttt{root process block} 的时间。
 \end{enumerate}
 
-也就是说，我最后并不是只看一个总时间，而是把“关键路径”“主进程负担”“通信负担”“本地更新”“总资源消耗”这几层分开来看。这样做的好处是，即使程序没有加速，我们也能知道它到底是卡在 root、卡在通信，还是卡在任务供给上。
-
-\subsection{3. 为什么最后选择以关键路径为主}
-
-我后面和 AI 讨论下来，最重要的一个收获其实就是：\textbf{并行程序分析时，不能把所有时间都按同一个层次去理解。}
-
-比如一开始看到 \texttt{comm subtotal} 比 \texttt{time gkh iteration(ms)} 还大时，我也会觉得这个数是不是有问题。后来才慢慢理清楚，这两个量本身就不是一个层次：
+同样的方法也可以拿去统计：
 \begin{enumerate}
-    \item \texttt{time gkh iteration(ms)} 和 \texttt{MPI\_MAX wall} 反映的是关键路径，也就是用户真正等了多久。
-    \item \texttt{comm subtotal} 和 \texttt{local update} 是把多个进程上的时间做累计之后得到的，所以它们本来就可以比关键路径更大。
+    \item 收发控制消息的时间；
+    \item 广播旋转操作的时间；
+    \item 本地应用旋转的时间；
+    \item 最后 gather 或 collect 的时间。
 \end{enumerate}
 
-把这件事想清楚之后，我后面的表头和解释也跟着改了。也就是后来报告里写的“关键路径Wall”“通信累计”“更新累计”这些说法，本质上就是在避免把不同层次的时间混为一谈。
+也就是说，这次不是用一个特别重的外部 profiler 去一次性看全局，而是优先在代码里自己埋时间点，把流程拆开来记。这样做的好处是每个时间量的含义都很明确，后面写报告时也比较容易解释。
 
-\subsection{4. 这次实际用到的 MPI 时间统计思路}
+\textbf{问：哪些量适合拿来说明“用户实际等了多久”，哪些量适合拿来说明“总资源消耗有多大”？}
 
-在实现上，我这次没有去用特别复杂的外部 profiler，而是优先在代码里加时间点，把程序运行过程拆开来统计。这里最常用的就是 \texttt{MPI\_Wtime()}，因为它比较适合拿来做 MPI 程序内部的分段计时。
+\textbf{答：} 这里最容易混掉，所以后来我和 AI 反复确认过，最后把这些量分成了两层。
 
-具体来说，思路就是：
+第一层是“用户实际等了多久”。这一层主要看：
 \begin{enumerate}
-    \item 在一段逻辑开始前记一个时间点；
-    \item 在结束后再记一个时间点；
-    \item 用前后差值算这一段花了多少时间；
-    \item 最后再根据这段时间属于“root 处理”“通信”“本地更新”中的哪一类，把它累计到对应统计量里。
+    \item \texttt{time gkh iteration(ms)}
+    \item \texttt{MPI\_MAX wall}
 \end{enumerate}
+因为这两个量都更接近关键路径，也就是程序真正结束前用户需要等待的时间。
 
-像 root 处理块、收发控制消息、广播旋转、应用旋转、最终 gather 这些时间，后面基本都是按这个思路一点一点加进去的。
-
-\subsection{5. AI 在这一部分真正帮到我的地方}
-
-如果只说“AI 帮我写了点文字”，那其实太表面了。对我来说，它在这一部分真正帮到我的地方主要有三个：
+第二层是“总资源消耗有多大”。这一层主要看：
 \begin{enumerate}
-    \item 帮我把“应该看哪个时间”这件事先分层理清楚了，特别是关键路径时间和累计时间不能混着理解这一点。
-    \item 帮我把原来代码里已经有的一些统计项重新组织成可以写进报告的口径，而不是只停留在打印了一堆数字。
-    \item 帮我把后面表格里的解释改得更严谨一些，避免出现“这些时间看起来加不起来，所以是不是数据错了”这种误读。
+    \item \texttt{comm subtotal}
+    \item \texttt{local update}
+    \item 调度器里的 \texttt{Time Use}
 \end{enumerate}
 
-所以这一部分保留下来，我觉得最大的意义不是证明“我用了 AI”，而是把我这次 profiling 的思路演化过程记录下来：一开始我关心关键路径该怎么统计，后来逐步明确了要把主进程、本地更新、通信累计和总资源消耗拆开来看，最后才形成了现在报告里这套比较稳定的分析口径。
+其中 \texttt{comm subtotal} 和 \texttt{local update} 是把多个进程上的对应时间累计起来之后得到的，所以它们可以比关键路径更大；而 \texttt{Time Use} 更像整个作业一共吃掉了多少 CPU 资源。也正是因为这几个量不是一个层次，所以后面我才把表头改成了“关键路径Wall”“通信累计”“更新累计”这种说法，避免把它们误看成能直接相加的同类时间。
+
+\subsection{3. 最后形成的分析口径}
+
+基于上面这些问答，最后我在报告里真正采用的 profiling 口径就是：
+\begin{enumerate}
+    \item 用 \texttt{time gkh iteration(ms)} 和 \texttt{MPI\_MAX wall} 看关键路径；
+    \item 用 \texttt{root process block} 和 \texttt{root extract+insert} 看主进程本地负担；
+    \item 用 \texttt{comm subtotal} 看总体通信负担；
+    \item 用 \texttt{local update} 看各进程本地更新量；
+    \item 用调度器的 \texttt{Time Use} 看整次作业的总资源消耗。
+\end{enumerate}
+
+这样做的好处是，如果后面程序没有加速，我就不会只得到一个“没有变快”的结论，而是还能继续往下分辨：它到底是卡在 root、卡在通信同步，还是卡在高层任务本身就喂不满这些进程。
 \end{document}
