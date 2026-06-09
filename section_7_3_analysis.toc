@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}引言}{1}{section.1}%
+\contentsline {subsection}{\numberline {1.1}多进程概念}{1}{subsection.1.1}%
+\contentsline {section}{\numberline {2}实验配置}{1}{section.2}%
+\contentsline {section}{\numberline {3}第一部分的实现：}{2}{section.3}%
+\contentsline {subsection}{\numberline {3.1}7.1.1：主从和任务池}{2}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}7.1.2：切分思路：}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}完成手册 7.1 之后测试的数据：}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}为什么没加速：问题不只在通信，更在任务供给}{6}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}和上次多线程实验的关系以及回答指导书中的7.3}{8}{subsection.3.5}%
+\contentsline {section}{\numberline {4}两种 MPI 尝试}{10}{section.4}%
+\contentsline {section}{\numberline {5}总结}{15}{section.5}%
+\contentsline {section}{\numberline {A}AI 使用说明附录}{15}{appendix.A}%
+\contentsline {subsection}{\numberline {A.1}1. 一开始关心的问题}{15}{subsection.A.1}%
+\contentsline {subsection}{\numberline {A.2}2. 最后定下来的时间口径}{16}{subsection.A.2}%
+\contentsline {subsection}{\numberline {A.3}3. 为什么最后选择以关键路径为主}{16}{subsection.A.3}%
+\contentsline {subsection}{\numberline {A.4}4. 这次实际用到的 MPI 时间统计思路}{17}{subsection.A.4}%
+\contentsline {subsection}{\numberline {A.5}5. AI 在这一部分真正帮到我的地方}{17}{subsection.A.5}%

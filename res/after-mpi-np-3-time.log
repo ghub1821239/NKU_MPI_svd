@@ -1,0 +1,875 @@
+Job ID                    Name             User            Time Use S Queue
+------------------------- ---------------- --------------- -------- - -----
+45777.master_ubss1         qsub_mpi         s2413633        00:00:46 C dque   
+45779.master_ubss1         qsub_mpi         s2413633        00:00:49 C dque 
+45780.master_ubss1         qsub_mpi         s2413633        00:00:51 C dque   
+45781.master_ubss1         qsub_mpi         s2413633        00:00:49 C dque 
+45782.master_ubss1         qsub_mpi         s2413633        00:00:47 C dque  
+
+=== 固定值 5x5 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.435114
+  root extract+insert(ms)   : 0.000953674
+  root process block(ms)    : 0.0255108
+  init distribution(ms)     : sum 0.289202, max 0.27442
+  ctrl send(ms)             : sum 0.00357628, max 0.00357628
+  ctrl recv(ms)             : sum 0.0329018, max 0.0197887
+  send u_ops(ms)            : sum 0.0026226, max 0.0026226
+  recv u_ops(ms)            : sum 0.0114441, max 0.0114441
+  send v_ops(ms)            : sum 0.00238419, max 0.00238419
+  recv v_ops(ms)            : sum 0.0188351, max 0.0188351
+  apply Ut(ms)              : sum 0.000476837, max 0.000476837
+  apply Vt(ms)              : sum 0.000476837, max 0.000476837
+  final collect(ms)         : sum 0.39506, max 0.387907
+  root finalize(ms)         : 0.00286102
+  comm subtotal(ms, sum)    : 0.756025
+  local update(ms, sum)     : 0.000953674
+  iterations                : 4
+  total u_ops / v_ops       : 27 / 27
+  logical payload bytes     : init 400, ctrl 40, u_ops 664, v_ops 664, final 400
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 3.87181e-12
+  relative recon error      : 2.76748e-13
+  ||U^T U-I||_F             : 1.56739e-15
+  ||V^T V-I||_F             : 8.82063e-16
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01188
+  time gkh iteration(ms)    : 0.694486
+  结果: PASS
+
+=== 随机 8x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.105858
+  root extract+insert(ms)   : 0.00143051
+  root process block(ms)    : 0.023365
+  init distribution(ms)     : sum 0.113487, max 0.0543594
+  ctrl send(ms)             : sum 0.0038147, max 0.0038147
+  ctrl recv(ms)             : sum 0.0452995, max 0.0243187
+  send u_ops(ms)            : sum 0.00405312, max 0.00405312
+  recv u_ops(ms)            : sum 0.0238419, max 0.0238419
+  send v_ops(ms)            : sum 0.00333786, max 0.00333786
+  recv v_ops(ms)            : sum 0.0264645, max 0.0264645
+  apply Ut(ms)              : sum 0.000953674, max 0.000953674
+  apply Vt(ms)              : sum 0.000715256, max 0.000715256
+  final collect(ms)         : sum 0.0166893, max 0.0150204
+  root finalize(ms)         : 0.00143051
+  comm subtotal(ms, sum)    : 0.236988
+  local update(ms, sum)     : 0.00166893
+  iterations                : 7
+  total u_ops / v_ops       : 71 / 71
+  logical payload bytes     : init 1024, ctrl 64, u_ops 1732, v_ops 1732, final 1024
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.50318e-14
+  relative recon error      : 9.52605e-16
+  ||U^T U-I||_F             : 2.46758e-15
+  ||V^T V-I||_F             : 2.46574e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01098
+  time gkh iteration(ms)    : 0.261632
+  结果: PASS
+
+=== 近秩亏损 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.128031
+  root extract+insert(ms)   : 0.00190735
+  root process block(ms)    : 0.0190735
+  init distribution(ms)     : sum 0.121117, max 0.0600815
+  ctrl send(ms)             : sum 0.00357628, max 0.00357628
+  ctrl recv(ms)             : sum 0.0562668, max 0.0400543
+  send u_ops(ms)            : sum 0.0038147, max 0.0038147
+  recv u_ops(ms)            : sum 0.0245571, max 0.0245571
+  send v_ops(ms)            : sum 0.00333786, max 0.00333786
+  recv v_ops(ms)            : sum 0.0264645, max 0.0264645
+  apply Ut(ms)              : sum 0.00119209, max 0.00119209
+  apply Vt(ms)              : sum 0.000953674, max 0.000953674
+  final collect(ms)         : sum 0.0379086, max 0.0357628
+  root finalize(ms)         : 0.00190735
+  comm subtotal(ms, sum)    : 0.277042
+  local update(ms, sum)     : 0.00214577
+  iterations                : 7
+  total u_ops / v_ops       : 66 / 66
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1612, v_ops 1612, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.10365e-14
+  relative recon error      : 8.91106e-16
+  ||U^T U-I||_F             : 2.04934e-15
+  ||V^T V-I||_F             : 2.58657e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01093
+  time gkh iteration(ms)    : 0.268012
+  结果: PASS
+
+=== 随机 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.0956059
+  root extract+insert(ms)   : 0.00166893
+  root process block(ms)    : 0.0240803
+  init distribution(ms)     : sum 0.100374, max 0.0505447
+  ctrl send(ms)             : sum 0.0026226, max 0.0026226
+  ctrl recv(ms)             : sum 0.0455379, max 0.0267029
+  send u_ops(ms)            : sum 0.00333786, max 0.00333786
+  recv u_ops(ms)            : sum 0.0178814, max 0.0178814
+  send v_ops(ms)            : sum 0.00333786, max 0.00333786
+  recv v_ops(ms)            : sum 0.0174046, max 0.0174046
+  apply Ut(ms)              : sum 0.00119209, max 0.00119209
+  apply Vt(ms)              : sum 0.00143051, max 0.00143051
+  final collect(ms)         : sum 0.0109673, max 0.00905991
+  root finalize(ms)         : 0.00166893
+  comm subtotal(ms, sum)    : 0.201464
+  local update(ms, sum)     : 0.0026226
+  iterations                : 7
+  total u_ops / v_ops       : 82 / 82
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1996, v_ops 1996, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.27384e-12
+  relative recon error      : 5.84677e-14
+  ||U^T U-I||_F             : 2.42725e-15
+  ||V^T V-I||_F             : 2.43068e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01035
+  time gkh iteration(ms)    : 0.195761
+  结果: PASS
+
+=== 随机 1000x1000 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 5880.21
+  root extract+insert(ms)   : 911.235
+  root process block(ms)    : 4342.92
+  init distribution(ms)     : sum 552.116, max 537.936
+  ctrl send(ms)             : sum 2.4128, max 2.4128
+  ctrl recv(ms)             : sum 8884.75, max 4751.14
+  send u_ops(ms)            : sum 5.21159, max 5.21159
+  recv u_ops(ms)            : sum 6.5074, max 6.5074
+  send v_ops(ms)            : sum 5.95069, max 5.95069
+  recv v_ops(ms)            : sum 12.4593, max 12.4593
+  apply Ut(ms)              : sum 1035.98, max 1035.98
+  apply Vt(ms)              : sum 1123.06, max 1123.06
+  final collect(ms)         : sum 26.3441, max 11.7273
+  root finalize(ms)         : 50.029
+  comm subtotal(ms, sum)    : 9495.75
+  local update(ms, sum)     : 2159.04
+  iterations                : 994
+  total u_ops / v_ops       : 775151 / 775151
+  logical payload bytes     : init 16000000, ctrl 7960, u_ops 18607600, v_ops 18607600, final 16000000
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 2.06478e-10
+  relative recon error      : 3.5722e-13
+  ||U^T U-I||_F             : 1.96832e-13
+  ||V^T V-I||_F             : 1.97124e-13
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 4670.72
+  time gkh iteration(ms)    : 5880.45
+  结果: PASS
+
+==============================
+随机种子基值: 20260408
+总上二对角化耗时(ms): 4670.76
+总GKH迭代耗时(ms): 5881.87
+通过: 5 / 5
+
+Authorized users only. All activities may be monitored and reported.
+
+
+=== 固定值 5x5 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.861883
+  root extract+insert(ms)   : 0.000953674
+  root process block(ms)    : 0.0228882
+  init distribution(ms)     : sum 0.0317097, max 0.0128746
+  ctrl send(ms)             : sum 0.00500679, max 0.00500679
+  ctrl recv(ms)             : sum 0.0264645, max 0.0140667
+  send u_ops(ms)            : sum 0.0026226, max 0.0026226
+  recv u_ops(ms)            : sum 0.0138283, max 0.0138283
+  send v_ops(ms)            : sum 0.0026226, max 0.0026226
+  recv v_ops(ms)            : sum 0.0114441, max 0.0114441
+  apply Ut(ms)              : sum 0.000476837, max 0.000476837
+  apply Vt(ms)              : sum 0.000715256, max 0.000715256
+  final collect(ms)         : sum 0.819206, max 0.813007
+  root finalize(ms)         : 0.00286102
+  comm subtotal(ms, sum)    : 0.912905
+  local update(ms, sum)     : 0.00119209
+  iterations                : 4
+  total u_ops / v_ops       : 27 / 27
+  logical payload bytes     : init 400, ctrl 40, u_ops 664, v_ops 664, final 400
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 3.87181e-12
+  relative recon error      : 2.76748e-13
+  ||U^T U-I||_F             : 1.56739e-15
+  ||V^T V-I||_F             : 8.82063e-16
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.014201
+  time gkh iteration(ms)    : 1.13436
+  结果: PASS
+
+=== 随机 8x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.0946522
+  root extract+insert(ms)   : 0.00238419
+  root process block(ms)    : 0.0243187
+  init distribution(ms)     : sum 0.0898838, max 0.0441074
+  ctrl send(ms)             : sum 0.0038147, max 0.0038147
+  ctrl recv(ms)             : sum 0.0474453, max 0.025034
+  send u_ops(ms)            : sum 0.00357628, max 0.00357628
+  recv u_ops(ms)            : sum 0.0240803, max 0.0240803
+  send v_ops(ms)            : sum 0.00309944, max 0.00309944
+  recv v_ops(ms)            : sum 0.0236034, max 0.0236034
+  apply Ut(ms)              : sum 0.000953674, max 0.000953674
+  apply Vt(ms)              : sum 0.00119209, max 0.00119209
+  final collect(ms)         : sum 0.0197887, max 0.017643
+  root finalize(ms)         : 0.00143051
+  comm subtotal(ms, sum)    : 0.215292
+  local update(ms, sum)     : 0.00214577
+  iterations                : 7
+  total u_ops / v_ops       : 71 / 71
+  logical payload bytes     : init 1024, ctrl 64, u_ops 1732, v_ops 1732, final 1024
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.50318e-14
+  relative recon error      : 9.52605e-16
+  ||U^T U-I||_F             : 2.46758e-15
+  ||V^T V-I||_F             : 2.46574e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.00941
+  time gkh iteration(ms)    : 0.254922
+  结果: PASS
+
+=== 近秩亏损 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.0946522
+  root extract+insert(ms)   : 0.00214577
+  root process block(ms)    : 0.0188351
+  init distribution(ms)     : sum 0.102043, max 0.0507832
+  ctrl send(ms)             : sum 0.00333786, max 0.00333786
+  ctrl recv(ms)             : sum 0.0345707, max 0.0193119
+  send u_ops(ms)            : sum 0.00405312, max 0.00405312
+  recv u_ops(ms)            : sum 0.0188351, max 0.0188351
+  send v_ops(ms)            : sum 0.0038147, max 0.0038147
+  recv v_ops(ms)            : sum 0.025034, max 0.025034
+  apply Ut(ms)              : sum 0.00119209, max 0.00119209
+  apply Vt(ms)              : sum 0.00119209, max 0.00119209
+  final collect(ms)         : sum 0.0121593, max 0.0107288
+  root finalize(ms)         : 0.00166893
+  comm subtotal(ms, sum)    : 0.203848
+  local update(ms, sum)     : 0.00238419
+  iterations                : 7
+  total u_ops / v_ops       : 66 / 66
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1612, v_ops 1612, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.10365e-14
+  relative recon error      : 8.91106e-16
+  ||U^T U-I||_F             : 2.04934e-15
+  ||V^T V-I||_F             : 2.58657e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.010171
+  time gkh iteration(ms)    : 0.202601
+  结果: PASS
+
+=== 随机 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.0901222
+  root extract+insert(ms)   : 0.00190735
+  root process block(ms)    : 0.0247955
+  init distribution(ms)     : sum 0.089407, max 0.0445843
+  ctrl send(ms)             : sum 0.0026226, max 0.0026226
+  ctrl recv(ms)             : sum 0.0491142, max 0.0247955
+  send u_ops(ms)            : sum 0.00333786, max 0.00333786
+  recv u_ops(ms)            : sum 0.0178814, max 0.0178814
+  send v_ops(ms)            : sum 0.00286102, max 0.00286102
+  recv v_ops(ms)            : sum 0.0116825, max 0.0116825
+  apply Ut(ms)              : sum 0.00166893, max 0.00166893
+  apply Vt(ms)              : sum 0.00143051, max 0.00143051
+  final collect(ms)         : sum 0.00929832, max 0.00834465
+  root finalize(ms)         : 0.00143051
+  comm subtotal(ms, sum)    : 0.186205
+  local update(ms, sum)     : 0.00309944
+  iterations                : 7
+  total u_ops / v_ops       : 82 / 82
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1996, v_ops 1996, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.27384e-12
+  relative recon error      : 5.84677e-14
+  ||U^T U-I||_F             : 2.42725e-15
+  ||V^T V-I||_F             : 2.43068e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.00892
+  time gkh iteration(ms)    : 0.174251
+  结果: PASS
+
+=== 随机 1000x1000 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 6018.89
+  root extract+insert(ms)   : 983.82
+  root process block(ms)    : 4495.58
+  init distribution(ms)     : sum 529.973, max 321.531
+  ctrl send(ms)             : sum 2.40326, max 2.40326
+  ctrl recv(ms)             : sum 9344.66, max 4791.34
+  send u_ops(ms)            : sum 6.30927, max 6.30927
+  recv u_ops(ms)            : sum 7.55072, max 7.55072
+  send v_ops(ms)            : sum 6.07944, max 6.07944
+  recv v_ops(ms)            : sum 12.2457, max 12.2457
+  apply Ut(ms)              : sum 891.988, max 891.988
+  apply Vt(ms)              : sum 929.87, max 929.87
+  final collect(ms)         : sum 27.4234, max 11.7066
+  root finalize(ms)         : 40.8213
+  comm subtotal(ms, sum)    : 9936.65
+  local update(ms, sum)     : 1821.86
+  iterations                : 994
+  total u_ops / v_ops       : 775151 / 775151
+  logical payload bytes     : init 16000000, ctrl 7960, u_ops 18607600, v_ops 18607600, final 16000000
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 2.06478e-10
+  relative recon error      : 3.5722e-13
+  ||U^T U-I||_F             : 1.96832e-13
+  ||V^T V-I||_F             : 1.97124e-13
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 5428.21
+  time gkh iteration(ms)    : 5760.77
+  结果: PASS
+
+==============================
+随机种子基值: 20260408
+总上二对角化耗时(ms): 5428.26
+总GKH迭代耗时(ms): 5762.53
+通过: 5 / 5
+
+Authorized users only. All activities may be monitored and reported.
+
+
+=== 固定值 5x5 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.744104
+  root extract+insert(ms)   : 0.00119209
+  root process block(ms)    : 0.0298023
+  init distribution(ms)     : sum 0.908375, max 0.692129
+  ctrl send(ms)             : sum 0.00429153, max 0.00429153
+  ctrl recv(ms)             : sum 0.0476837, max 0.0257492
+  send u_ops(ms)            : sum 0.0064373, max 0.0064373
+  recv u_ops(ms)            : sum 0.0212193, max 0.0212193
+  send v_ops(ms)            : sum 0.00572205, max 0.00572205
+  recv v_ops(ms)            : sum 0.0231266, max 0.0231266
+  apply Ut(ms)              : sum 0.000238419, max 0.000238419
+  apply Vt(ms)              : sum 0.000476837, max 0.000476837
+  final collect(ms)         : sum 0.0183582, max 0.0112057
+  root finalize(ms)         : 0.00190735
+  comm subtotal(ms, sum)    : 1.03521
+  local update(ms, sum)     : 0.000715256
+  iterations                : 4
+  total u_ops / v_ops       : 27 / 27
+  logical payload bytes     : init 400, ctrl 40, u_ops 664, v_ops 664, final 400
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 3.87181e-12
+  relative recon error      : 2.76748e-13
+  ||U^T U-I||_F             : 1.56739e-15
+  ||V^T V-I||_F             : 8.82063e-16
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01396
+  time gkh iteration(ms)    : 0.402783
+  结果: PASS
+
+=== 随机 8x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.117064
+  root extract+insert(ms)   : 0.00715256
+  root process block(ms)    : 0.0236034
+  init distribution(ms)     : sum 0.11158, max 0.0550747
+  ctrl send(ms)             : sum 0.0064373, max 0.0064373
+  ctrl recv(ms)             : sum 0.056982, max 0.0312328
+  send u_ops(ms)            : sum 0.0100136, max 0.0100136
+  recv u_ops(ms)            : sum 0.0264645, max 0.0264645
+  send v_ops(ms)            : sum 0.00786781, max 0.00786781
+  recv v_ops(ms)            : sum 0.0333786, max 0.0333786
+  apply Ut(ms)              : sum 0.000953674, max 0.000953674
+  apply Vt(ms)              : sum 0.00143051, max 0.00143051
+  final collect(ms)         : sum 0.00691414, max 0.00548363
+  root finalize(ms)         : 0.00166893
+  comm subtotal(ms, sum)    : 0.259638
+  local update(ms, sum)     : 0.00238419
+  iterations                : 7
+  total u_ops / v_ops       : 71 / 71
+  logical payload bytes     : init 1024, ctrl 64, u_ops 1732, v_ops 1732, final 1024
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.50318e-14
+  relative recon error      : 9.52605e-16
+  ||U^T U-I||_F             : 2.46758e-15
+  ||V^T V-I||_F             : 2.46574e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01038
+  time gkh iteration(ms)    : 0.358943
+  结果: PASS
+
+=== 近秩亏损 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.100613
+  root extract+insert(ms)   : 0.00166893
+  root process block(ms)    : 0.0195503
+  init distribution(ms)     : sum 0.0977516, max 0.0481606
+  ctrl send(ms)             : sum 0.00405312, max 0.00405312
+  ctrl recv(ms)             : sum 0.030756, max 0.017643
+  send u_ops(ms)            : sum 0.010252, max 0.010252
+  recv u_ops(ms)            : sum 0.0309944, max 0.0309944
+  send v_ops(ms)            : sum 0.0109673, max 0.0109673
+  recv v_ops(ms)            : sum 0.0362396, max 0.0362396
+  apply Ut(ms)              : sum 0.000715256, max 0.000715256
+  apply Vt(ms)              : sum 0.000953674, max 0.000953674
+  final collect(ms)         : sum 0.00715256, max 0.00500679
+  root finalize(ms)         : 0.00357628
+  comm subtotal(ms, sum)    : 0.228167
+  local update(ms, sum)     : 0.00166893
+  iterations                : 7
+  total u_ops / v_ops       : 66 / 66
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1612, v_ops 1612, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.10365e-14
+  relative recon error      : 8.91106e-16
+  ||U^T U-I||_F             : 2.04934e-15
+  ||V^T V-I||_F             : 2.58657e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01477
+  time gkh iteration(ms)    : 0.244322
+  结果: PASS
+
+=== 随机 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.102043
+  root extract+insert(ms)   : 0.00238419
+  root process block(ms)    : 0.0247955
+  init distribution(ms)     : sum 0.0872612, max 0.0433922
+  ctrl send(ms)             : sum 0.00429153, max 0.00429153
+  ctrl recv(ms)             : sum 0.0448227, max 0.0255108
+  send u_ops(ms)            : sum 0.010252, max 0.010252
+  recv u_ops(ms)            : sum 0.0293255, max 0.0293255
+  send v_ops(ms)            : sum 0.00810623, max 0.00810623
+  recv v_ops(ms)            : sum 0.0317097, max 0.0317097
+  apply Ut(ms)              : sum 0.00143051, max 0.00143051
+  apply Vt(ms)              : sum 0.00143051, max 0.00143051
+  final collect(ms)         : sum 0.0100136, max 0.00834465
+  root finalize(ms)         : 0.00166893
+  comm subtotal(ms, sum)    : 0.225782
+  local update(ms, sum)     : 0.00286102
+  iterations                : 7
+  total u_ops / v_ops       : 82 / 82
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1996, v_ops 1996, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.27384e-12
+  relative recon error      : 5.84677e-14
+  ||U^T U-I||_F             : 2.42725e-15
+  ||V^T V-I||_F             : 2.43068e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.00905
+  time gkh iteration(ms)    : 0.630775
+  结果: PASS
+
+=== 随机 1000x1000 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 5729.29
+  root extract+insert(ms)   : 912.448
+  root process block(ms)    : 4422.48
+  init distribution(ms)     : sum 319.098, max 303.836
+  ctrl send(ms)             : sum 2.53534, max 2.53534
+  ctrl recv(ms)             : sum 9061.93, max 4620.9
+  send u_ops(ms)            : sum 5.55015, max 5.55015
+  recv u_ops(ms)            : sum 7.50899, max 7.50899
+  send v_ops(ms)            : sum 7.27177, max 7.27177
+  recv v_ops(ms)            : sum 13.8009, max 13.8009
+  apply Ut(ms)              : sum 873.335, max 873.335
+  apply Vt(ms)              : sum 896.615, max 896.615
+  final collect(ms)         : sum 27.1904, max 11.9212
+  root finalize(ms)         : 51.1897
+  comm subtotal(ms, sum)    : 9444.88
+  local update(ms, sum)     : 1769.95
+  iterations                : 994
+  total u_ops / v_ops       : 775151 / 775151
+  logical payload bytes     : init 16000000, ctrl 7960, u_ops 18607600, v_ops 18607600, final 16000000
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 2.06478e-10
+  relative recon error      : 3.5722e-13
+  ||U^T U-I||_F             : 1.96832e-13
+  ||V^T V-I||_F             : 1.97124e-13
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 4891.06
+  time gkh iteration(ms)    : 5729.53
+  结果: PASS
+
+==============================
+随机种子基值: 20260408
+总上二对角化耗时(ms): 4891.11
+总GKH迭代耗时(ms): 5731.17
+通过: 5 / 5
+
+Authorized users only. All activities may be monitored and reported.
+
+=== 固定值 5x5 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.408888
+  root extract+insert(ms)   : 0.000953674
+  root process block(ms)    : 0.0281334
+  init distribution(ms)     : sum 0.509024, max 0.357866
+  ctrl send(ms)             : sum 0.00452995, max 0.00452995
+  ctrl recv(ms)             : sum 0.0536442, max 0.0286102
+  send u_ops(ms)            : sum 0.0038147, max 0.0038147
+  recv u_ops(ms)            : sum 0.017643, max 0.017643
+  send v_ops(ms)            : sum 0.00333786, max 0.00333786
+  recv v_ops(ms)            : sum 0.017643, max 0.017643
+  apply Ut(ms)              : sum 0.000715256, max 0.000715256
+  apply Vt(ms)              : sum 0.000715256, max 0.000715256
+  final collect(ms)         : sum 0.0219345, max 0.0145435
+  root finalize(ms)         : 0.00190735
+  comm subtotal(ms, sum)    : 0.631571
+  local update(ms, sum)     : 0.00143051
+  iterations                : 4
+  total u_ops / v_ops       : 27 / 27
+  logical payload bytes     : init 400, ctrl 40, u_ops 664, v_ops 664, final 400
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 3.87181e-12
+  relative recon error      : 2.76748e-13
+  ||U^T U-I||_F             : 1.56739e-15
+  ||V^T V-I||_F             : 8.82063e-16
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01356
+  time gkh iteration(ms)    : 0.402304
+  结果: PASS
+
+=== 随机 8x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.119686
+  root extract+insert(ms)   : 0.0064373
+  root process block(ms)    : 0.0238419
+  init distribution(ms)     : sum 0.12064, max 0.0593662
+  ctrl send(ms)             : sum 0.00452995, max 0.00452995
+  ctrl recv(ms)             : sum 0.0538826, max 0.0288486
+  send u_ops(ms)            : sum 0.00500679, max 0.00500679
+  recv u_ops(ms)            : sum 0.0276566, max 0.0276566
+  send v_ops(ms)            : sum 0.00476837, max 0.00476837
+  recv v_ops(ms)            : sum 0.0298023, max 0.0298023
+  apply Ut(ms)              : sum 0.000953674, max 0.000953674
+  apply Vt(ms)              : sum 0.000953674, max 0.000953674
+  final collect(ms)         : sum 0.0154972, max 0.0135899
+  root finalize(ms)         : 0.00143051
+  comm subtotal(ms, sum)    : 0.261784
+  local update(ms, sum)     : 0.00190735
+  iterations                : 7
+  total u_ops / v_ops       : 71 / 71
+  logical payload bytes     : init 1024, ctrl 64, u_ops 1732, v_ops 1732, final 1024
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.50318e-14
+  relative recon error      : 9.52605e-16
+  ||U^T U-I||_F             : 2.46758e-15
+  ||V^T V-I||_F             : 2.46574e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01005
+  time gkh iteration(ms)    : 0.316163
+  结果: PASS
+
+=== 近秩亏损 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.127077
+  root extract+insert(ms)   : 0.00119209
+  root process block(ms)    : 0.0188351
+  init distribution(ms)     : sum 0.152349, max 0.0755787
+  ctrl send(ms)             : sum 0.00452995, max 0.00452995
+  ctrl recv(ms)             : sum 0.0352859, max 0.0195503
+  send u_ops(ms)            : sum 0.00524521, max 0.00524521
+  recv u_ops(ms)            : sum 0.0293255, max 0.0293255
+  send v_ops(ms)            : sum 0.00357628, max 0.00357628
+  recv v_ops(ms)            : sum 0.0293255, max 0.0293255
+  apply Ut(ms)              : sum 0.00143051, max 0.00143051
+  apply Vt(ms)              : sum 0.00119209, max 0.00119209
+  final collect(ms)         : sum 0.0195503, max 0.0178814
+  root finalize(ms)         : 0.0038147
+  comm subtotal(ms, sum)    : 0.279188
+  local update(ms, sum)     : 0.0026226
+  iterations                : 7
+  total u_ops / v_ops       : 66 / 66
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1612, v_ops 1612, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.10365e-14
+  relative recon error      : 8.91106e-16
+  ||U^T U-I||_F             : 2.04934e-15
+  ||V^T V-I||_F             : 2.58657e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01432
+  time gkh iteration(ms)    : 0.618575
+  结果: PASS
+
+=== 随机 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.120401
+  root extract+insert(ms)   : 0.0026226
+  root process block(ms)    : 0.0245571
+  init distribution(ms)     : sum 0.153542, max 0.0765324
+  ctrl send(ms)             : sum 0.0038147, max 0.0038147
+  ctrl recv(ms)             : sum 0.04673, max 0.0257492
+  send u_ops(ms)            : sum 0.00548363, max 0.00548363
+  recv u_ops(ms)            : sum 0.014782, max 0.014782
+  send v_ops(ms)            : sum 0.00452995, max 0.00452995
+  recv v_ops(ms)            : sum 0.0193119, max 0.0193119
+  apply Ut(ms)              : sum 0.00119209, max 0.00119209
+  apply Vt(ms)              : sum 0.000953674, max 0.000953674
+  final collect(ms)         : sum 0.00476837, max 0.00333786
+  root finalize(ms)         : 0.00166893
+  comm subtotal(ms, sum)    : 0.252962
+  local update(ms, sum)     : 0.00214577
+  iterations                : 7
+  total u_ops / v_ops       : 82 / 82
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1996, v_ops 1996, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.27384e-12
+  relative recon error      : 5.84677e-14
+  ||U^T U-I||_F             : 2.42725e-15
+  ||V^T V-I||_F             : 2.43068e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.00964
+  time gkh iteration(ms)    : 0.235292
+  结果: PASS
+
+=== 随机 1000x1000 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 6334.78
+  root extract+insert(ms)   : 871.775
+  root process block(ms)    : 4623.61
+  init distribution(ms)     : sum 1339.52, max 812.708
+  ctrl send(ms)             : sum 3.38984, max 3.38984
+  ctrl recv(ms)             : sum 9266.83, max 4634.77
+  send u_ops(ms)            : sum 4.60792, max 4.60792
+  recv u_ops(ms)            : sum 7.76148, max 7.76148
+  send v_ops(ms)            : sum 5.89204, max 5.89204
+  recv v_ops(ms)            : sum 12.8167, max 12.8167
+  apply Ut(ms)              : sum 876.577, max 876.577
+  apply Vt(ms)              : sum 863.642, max 863.642
+  final collect(ms)         : sum 25.8477, max 11.0586
+  root finalize(ms)         : 50.6301
+  comm subtotal(ms, sum)    : 10666.7
+  local update(ms, sum)     : 1740.22
+  iterations                : 994
+  total u_ops / v_ops       : 775151 / 775151
+  logical payload bytes     : init 16000000, ctrl 7960, u_ops 18607600, v_ops 18607600, final 16000000
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 2.06478e-10
+  relative recon error      : 3.5722e-13
+  ||U^T U-I||_F             : 1.96832e-13
+  ||V^T V-I||_F             : 1.97124e-13
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 4860.04
+  time gkh iteration(ms)    : 5593.92
+  结果: PASS
+
+==============================
+随机种子基值: 20260408
+总上二对角化耗时(ms): 4860.09
+总GKH迭代耗时(ms): 5595.49
+通过: 5 / 5
+
+Authorized users only. All activities may be monitored and reported.
+
+
+=== 固定值 5x5 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.49448
+  root extract+insert(ms)   : 0.000953674
+  root process block(ms)    : 0.0240803
+  init distribution(ms)     : sum 0.0288486, max 0.0116825
+  ctrl send(ms)             : sum 0.00452995, max 0.00452995
+  ctrl recv(ms)             : sum 0.041008, max 0.0226498
+  send u_ops(ms)            : sum 0.00286102, max 0.00286102
+  recv u_ops(ms)            : sum 0.0185966, max 0.0185966
+  send v_ops(ms)            : sum 0.00214577, max 0.00214577
+  recv v_ops(ms)            : sum 0.023365, max 0.023365
+  apply Ut(ms)              : sum 0.000715256, max 0.000715256
+  apply Vt(ms)              : sum 0.000953674, max 0.000953674
+  final collect(ms)         : sum 0.454903, max 0.447273
+  root finalize(ms)         : 0.00214577
+  comm subtotal(ms, sum)    : 0.576258
+  local update(ms, sum)     : 0.00166893
+  iterations                : 4
+  total u_ops / v_ops       : 27 / 27
+  logical payload bytes     : init 400, ctrl 40, u_ops 664, v_ops 664, final 400
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 3.87181e-12
+  relative recon error      : 2.76748e-13
+  ||U^T U-I||_F             : 1.56739e-15
+  ||V^T V-I||_F             : 8.82063e-16
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01358
+  time gkh iteration(ms)    : 1.13146
+  结果: PASS
+
+=== 随机 8x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.121832
+  root extract+insert(ms)   : 0.00190735
+  root process block(ms)    : 0.0231266
+  init distribution(ms)     : sum 0.137806, max 0.0658035
+  ctrl send(ms)             : sum 0.0038147, max 0.0038147
+  ctrl recv(ms)             : sum 0.0422001, max 0.0219345
+  send u_ops(ms)            : sum 0.00452995, max 0.00452995
+  recv u_ops(ms)            : sum 0.0305176, max 0.0305176
+  send v_ops(ms)            : sum 0.00333786, max 0.00333786
+  recv v_ops(ms)            : sum 0.0286102, max 0.0286102
+  apply Ut(ms)              : sum 0.000953674, max 0.000953674
+  apply Vt(ms)              : sum 0.000715256, max 0.000715256
+  final collect(ms)         : sum 0.0216961, max 0.0200272
+  root finalize(ms)         : 0.00166893
+  comm subtotal(ms, sum)    : 0.272512
+  local update(ms, sum)     : 0.00166893
+  iterations                : 7
+  total u_ops / v_ops       : 71 / 71
+  logical payload bytes     : init 1024, ctrl 64, u_ops 1732, v_ops 1732, final 1024
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.50318e-14
+  relative recon error      : 9.52605e-16
+  ||U^T U-I||_F             : 2.46758e-15
+  ||V^T V-I||_F             : 2.46574e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.00957
+  time gkh iteration(ms)    : 0.273322
+  结果: PASS
+
+=== 近秩亏损 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.124931
+  root extract+insert(ms)   : 0.0224113
+  root process block(ms)    : 0.0200272
+  init distribution(ms)     : sum 0.149727, max 0.0865459
+  ctrl send(ms)             : sum 0.00357628, max 0.00357628
+  ctrl recv(ms)             : sum 0.0400543, max 0.0324249
+  send u_ops(ms)            : sum 0.00452995, max 0.00452995
+  recv u_ops(ms)            : sum 0.0236034, max 0.0236034
+  send v_ops(ms)            : sum 0.00405312, max 0.00405312
+  recv v_ops(ms)            : sum 0.0271797, max 0.0271797
+  apply Ut(ms)              : sum 0.000953674, max 0.000953674
+  apply Vt(ms)              : sum 0.00143051, max 0.00143051
+  final collect(ms)         : sum 0.0107288, max 0.00858307
+  root finalize(ms)         : 0.00476837
+  comm subtotal(ms, sum)    : 0.263453
+  local update(ms, sum)     : 0.00238419
+  iterations                : 7
+  total u_ops / v_ops       : 66 / 66
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1612, v_ops 1612, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.10365e-14
+  relative recon error      : 8.91106e-16
+  ||U^T U-I||_F             : 2.04934e-15
+  ||V^T V-I||_F             : 2.58657e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.01013
+  time gkh iteration(ms)    : 0.241112
+  结果: PASS
+
+=== 随机 10x8 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 0.103235
+  root extract+insert(ms)   : 0.00143051
+  root process block(ms)    : 0.0247955
+  init distribution(ms)     : sum 0.118732, max 0.0600815
+  ctrl send(ms)             : sum 0.00309944, max 0.00309944
+  ctrl recv(ms)             : sum 0.0567436, max 0.0295639
+  send u_ops(ms)            : sum 0.0038147, max 0.0038147
+  recv u_ops(ms)            : sum 0.0107288, max 0.0107288
+  send v_ops(ms)            : sum 0.00429153, max 0.00429153
+  recv v_ops(ms)            : sum 0.0109673, max 0.0109673
+  apply Ut(ms)              : sum 0.00143051, max 0.00143051
+  apply Vt(ms)              : sum 0.000953674, max 0.000953674
+  final collect(ms)         : sum 0.0064373, max 0.00524521
+  root finalize(ms)         : 0.00166893
+  comm subtotal(ms, sum)    : 0.214815
+  local update(ms, sum)     : 0.00238419
+  iterations                : 7
+  total u_ops / v_ops       : 82 / 82
+  logical payload bytes     : init 1312, ctrl 64, u_ops 1996, v_ops 1996, final 1312
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 1.27384e-12
+  relative recon error      : 5.84677e-14
+  ||U^T U-I||_F             : 2.42725e-15
+  ||V^T V-I||_F             : 2.43068e-15
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 0.00949
+  time gkh iteration(ms)    : 0.198352
+  结果: PASS
+
+=== 随机 1000x1000 ===
+[mpi1.0-fixed-np3-after7.1 timing]
+  total wall(ms, MPI_MAX)   : 6292.35
+  root extract+insert(ms)   : 957.491
+  root process block(ms)    : 4391.52
+  init distribution(ms)     : sum 868.399, max 855.522
+  ctrl send(ms)             : sum 2.15292, max 2.15292
+  ctrl recv(ms)             : sum 9048.86, max 4559.44
+  send u_ops(ms)            : sum 5.55086, max 5.55086
+  recv u_ops(ms)            : sum 6.86145, max 6.86145
+  send v_ops(ms)            : sum 5.87296, max 5.87296
+  recv v_ops(ms)            : sum 11.6942, max 11.6942
+  apply Ut(ms)              : sum 857.786, max 857.786
+  apply Vt(ms)              : sum 862.985, max 862.985
+  final collect(ms)         : sum 27.0922, max 11.9088
+  root finalize(ms)         : 49.6881
+  comm subtotal(ms, sum)    : 9976.48
+  local update(ms, sum)     : 1720.77
+  iterations                : 994
+  total u_ops / v_ops       : 775151 / 775151
+  logical payload bytes     : init 16000000, ctrl 7960, u_ops 18607600, v_ops 18607600, final 16000000
+  converged                 : yes
+  ||A-U*S*V^T||_F           : 2.06478e-10
+  relative recon error      : 3.5722e-13
+  ||U^T U-I||_F             : 1.96832e-13
+  ||V^T V-I||_F             : 1.97124e-13
+  diagonal structure error  : 0
+  descending order error    : 0
+  nonnegative diagonal      : yes
+  time bidiagonalization(ms): 4388.29
+  time gkh iteration(ms)    : 6292.57
+  结果: PASS
+
+==============================
+随机种子基值: 20260408
+总上二对角化耗时(ms): 4388.33
+总GKH迭代耗时(ms): 6294.42
+通过: 5 / 5
+
+Authorized users only. All activities may be monitored and reported.
