@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.6)  9 JUN 2026 14:46
+This is XeTeX, Version 3.141592653-2.6-0.999996 (TeX Live 2024) (preloaded format=xelatex 2025.3.6)  9 JUN 2026 14:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -588,17 +588,7 @@ File: lstlang1.sty 2024/02/21 1.10 listings language file
 File: lstlang1.sty 2024/02/21 1.10 listings language file
 ) (/usr/local/texlive/2024/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2024/02/21 1.10 (Carsten Heinz)
-) (/Users/jiaoyukun/Desktop/大学/大二/大二下/并行/MPI/svd/.texpadtmp/section_7_3_analysis.aux
-
-LaTeX Warning: Label `fig:slot-mpi1-result' multiply defined.
-
-
-LaTeX Warning: Label `fig:slot-mpi1-result' multiply defined.
-
-
-LaTeX Warning: Label `fig:slot-mpi1-result' multiply defined.
-
-)
+) (/Users/jiaoyukun/Desktop/大学/大二/大二下/并行/MPI/svd/.texpadtmp/section_7_3_analysis.aux)
 \openout1 = `section_7_3_analysis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 99.
@@ -728,4 +718,128 @@ Package hyperref Info: Link coloring OFF on input line 99.
 
 \c@lstlisting=\count343
 File: /Users/jiaoyukun/Desktop/大学/大二/大二上/史纲/南开校徽.png Graphic file (type bmp)
-</Users/jiaoyukun/Desktop/大学/大二/大二上/
+</Users/jiaoyukun/Desktop/大学/大二/大二上/史纲/南开校徽.png>
+LaTeX Font Info:    Trying to load font information for U+msa on input line 101.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 101.
+ (/usr/local/texlive/2024/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+] (/Users/jiaoyukun/Desktop/大学/大二/大二下/并行/MPI/svd/.texpadtmp/section_7_3_analysis.toc)
+\tf@toc=\write4
+\openout4 = `section_7_3_analysis.toc'.
+
+ [1]
+
+Package fontspec Warning: Font "STSong" does not contain requested Script
+(fontspec)                "CJK".
+
+
+Package fontspec Info: Could not resolve font "STSong/BI" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "STSong/B" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Could not resolve font "STSong/I" (it probably doesn't
+(fontspec)             exist).
+
+
+Package fontspec Info: Font family 'STSong(0)' created for font 'STSong' with
+(fontspec)             options [Script={CJK}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->"STSong/OT:language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+[1] [2] [3]
+Overfull \hbox (4.48369pt too wide) in paragraph at lines 259--261
+[]\TU/SongtiSC(0)/m/n/12 主 从 框 架 我 们 已 经 实 现 了，|  但 是 就 像 指 导 手 册 里 说 的 如 果 还 按 原 来 每 一 轮 \TU/lmtt/m/n/12 iteration
+ []
+
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <12> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 263.
+
+Overfull \hbox (16.6237pt too wide) in paragraph at lines 262--264
+[]\TU/SongtiSC(0)/m/n/12 原 因 和 上 次 我 们 在 线 程 报 告 里 说 的 一 样，| \TU/lmtt/m/n/12 gkh_svd_from_bidiagonal \TU/SongtiSC(0)/m/n/12 的 外 层 \TU/lmtt/m/n/12 iteration
+ []
+
+[4]
+File: 1.png Graphic file (type bmp)
+<1.png>
+File: 2.png Graphic file (type bmp)
+<2.png>
+File: 3.png Graphic file (type bmp)
+<3.png>
+ [5]
+File: 4.png Graphic file (type bmp)
+<4.png>
+ [6]
+File: 5.png Graphic file (type bmp)
+<5.png>
+File: 6.png Graphic file (type bmp)
+<6.png>
+File: 7.png Graphic file (type bmp)
+<7.png>
+ [7] [8]
+File: 8.png Graphic file (type bmp)
+<8.png>
+ [9] [10]
+Overfull \hbox (45.84196pt too wide) in paragraph at lines 546--553
+ [][] 
+ []
+
+[11]
+File: 9.png Graphic file (type bmp)
+<9.png>
+File: 10.png Graphic file (type bmp)
+<10.png>
+ [12] [13]
+Overfull \hbox (58.72478pt too wide) in paragraph at lines 645--654
+ [][] 
+ []
+
+
+Overfull \hbox (21.35762pt too wide) in paragraph at lines 663--666
+[]\TU/SongtiSC(0)/m/n/12 更 关 键 的 是 通 信 项。| \TU/lmtt/m/n/12 comm subtotal \TU/SongtiSC(0)/m/n/12 从 \TU/lmtt/m/n/12 np=2 \TU/SongtiSC(0)/m/n/12 的 $\OT1/cmr/m/n/12 6746\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 12[]$ \TU/SongtiSC(0)/m/n/12 直 接 涨 到 \TU/lmtt/m/n/12 np=8 \TU/SongtiSC(0)/m/n/12 的 $\OT1/cmr/m/n/12 49006\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 93[]$\TU/SongtiSC(0)/m/n/12 ，|
+ []
+
+File: 11.png Graphic file (type bmp)
+<11.png>
+File: 12.png Graphic file (type bmp)
+<12.png>
+File: 13.png Graphic file (type bmp)
+<13.png>
+File: 14.png Graphic file (type bmp)
+<14.png>
+[14]
+File: 15.png Graphic file (type bmp)
+<15.png>
+File: 16.png Graphic file (type bmp)
+<16.png>
+ [15] [16] [17] (/Users/jiaoyukun/Desktop/大学/大二/大二下/并行/MPI/svd/.texpadtmp/section_7_3_analysis.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2022/08/05>
+ ***********
+Package rerunfilecheck Info: File `section_7_3_analysis.out' has not changed.
+(rerunfilecheck)             Checksum: 530AFBF52DFD3E7883FFD871927C5AB4;1974.
+ ) 
+Here is how much of TeX's memory you used:
+ 21128 strings out of 474773
+ 449736 string characters out of 5757725
+ 2111839 words of memory out of 5000000
+ 42939 multiletter control sequences out of 15000+600000
+ 567317 words of font info for 117 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 93i,13n,97p,1210b,1891s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on /Users/jiaoyukun/Desktop/大学/大二/大二下/并行/MPI/svd/.texpadtmp/section_7_3_analysis.pdf (19 pages).
